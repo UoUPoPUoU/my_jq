@@ -198,7 +198,6 @@ function carousel(obj) {
         for (var j = 0; j < dots.length; j++) {
             dots[j].classList.remove(obj.className);
         }
-
         dots[num].classList.add(obj.className);
         num++;
         move = setTimeout(play, 2000);
@@ -206,7 +205,6 @@ function carousel(obj) {
             num = 0;
         }
     }
-
 
 
 // 添加dot事件
@@ -235,51 +233,33 @@ function carousel(obj) {
     }
 
     // 上一张点击事件
-    prev.onclick=function () {
-        /*clearTimeout(move);
-        console.log(num+" 最上面");
-        if(num===0){
-            num = picA.length;
-            pic.style.left = 100 * -(num-1) + "%";
-        }else {
-            console.log(-(num-1)+" else里面");
-            pic.style.left = 100 * -(num-1) + "%";
-
+    prev.onclick = function () {
+        clearTimeout(move);
+        if (num === 0) {
+            num = dots.length - 1;
+            pic.style.left = 100 * -num + "%";
+        } else if (num > 0) {
+            num--;
+            pic.style.left = 100 * -num + "%";
         }
-        console.log(num+" 下面");
-        num--;*/
-
-       /* if(num<picA.length) num++;*/
-if(num>0) num--;
-play();
-
-
-        console.log(num+" 上面");
-
+        for (var j = 0; j < dots.length; j++) {
+            dots[j].classList.remove(obj.className);
+        }
+        dots[num].classList.add(obj.className);
     };
-    next.onclick=function () {
-        /*clearTimeout(move);
-        console.log(num);
-        if(num===picA.length){
-            num=0;
-            pic.style.left = 100 * -num + "%";
-        }else {
-            pic.style.left = 100 * -(num+1) + "%";
-
-        }
-        num++;
-        console.log(num);*/
-        console.log(num+" 下面");
-        /*if(num<picA.length){
+    next.onclick = function () {
+        clearTimeout(move);
+        if (num < dots.length - 1) {
             num++;
-            console.log(num+" shang面");
-        } else if(num===picA.length){
-            console.log(num+" 下面");
-
-            num=0;
+            pic.style.left = 100 * -num + "%";
+        } else if (num === dots.length - 1) {
+            num = 0;
             pic.style.left = 100 * -num + "%";
         }
-        play();*/
+        for (var j = 0; j < dots.length; j++) {
+            dots[j].classList.remove(obj.className);
+        }
+        dots[num].classList.add(obj.className);
     };
 
 
